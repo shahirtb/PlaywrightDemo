@@ -35,29 +35,6 @@ test.describe('New Todo', () => {
     await checkNumberOfTodosInLocalStorage(page, 2);
   });
 
-  test('my test', async ({ page }) => {
-
-    // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/Playwright/);
-  
-    // Expect an attribute "to be strictly equal" to the value.
-    await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
-  
-    await page.click('text=Get Started');
-    // Expect some text to be visible on the page.
-    await expect(page.locator('text=Introduction').first()).toBeVisible();
-  });
-
-  test('should clear text input field when an item is added', async ({ page }) => {
-    // Create one todo item.
-    await page.locator('.new-todo').fill(TODO_ITEMS[0]);
-    await page.locator('.new-todo').press('Enter');
-
-    // Check that input is empty.
-    await expect(page.locator('.new-todo')).toBeEmpty();
-    await checkNumberOfTodosInLocalStorage(page, 1);
-  });
-
   test('should append new items to the bottom of the list', async ({ page }) => {
     // Create 3 items.
     await createDefaultTodos(page);
